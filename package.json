@@ -1,0 +1,18 @@
+{
+  "name": "git-tabular-diff",
+  "main": "./lib/git-tabular-diff",
+  "version": "0.0.0",
+  "description": "A short description of your package",
+  "keywords": [
+  ],
+  "activationCommands": {
+    "atom-workspace": "git-tabular-diff:toggle"
+  },
+  "repository": "https://github.com/jstritch/git-tabular-diff",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+  }
+}

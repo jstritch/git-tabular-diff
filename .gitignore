@@ -1,0 +1,5 @@
+# Visit https://git-scm.com/docs/gitignore for information.
+
+.DS_Store
+npm-debug.log
+node_modules

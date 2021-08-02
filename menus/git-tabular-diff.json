@@ -1,0 +1,26 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Toggle git-tabular-diff",
+        "command": "git-tabular-diff:toggle"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "git-tabular-diff",
+          "submenu": [
+            {
+              "label": "Toggle",
+              "command": "git-tabular-diff:toggle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
