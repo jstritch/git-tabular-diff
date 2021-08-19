@@ -2,8 +2,46 @@
   "context-menu": {
     "atom-text-editor": [
       {
-        "label": "Toggle git-tabular-diff",
-        "command": "git-tabular-diff:toggle"
+        "label": "Git Tabular Diff",
+        "submenu": [
+          {
+            "label": "Compare Selected Files",
+            "command": "git-tabular-diff:compare-selected-files"
+          }
+        ]
+      }
+    ],
+    ".tree-view": [
+      {
+        "label": "Git Tabular Diff",
+        "submenu": [
+          {
+            "label": "Compare Selected Files",
+            "command": "git-tabular-diff:compare-selected-files"
+          }
+        ]
+      }
+    ],
+    ".github-UnstagedChanges .github-FilePatchListView": [
+      {
+        "label": "Git Tabular Diff",
+        "submenu": [
+          {
+            "label": "Compare Selected Files",
+            "command": "git-tabular-diff:compare-selected-files"
+          }
+        ]
+      }
+    ],
+    ".github-StagedChanges .github-FilePatchListView": [
+      {
+        "label": "Git Tabular Diff",
+        "submenu": [
+          {
+            "label": "Compare Selected Files",
+            "command": "git-tabular-diff:compare-selected-files"
+          }
+        ]
       }
     ]
   },
@@ -12,11 +50,11 @@
       "label": "Packages",
       "submenu": [
         {
-          "label": "git-tabular-diff",
+          "label": "Git Tabular Diff",
           "submenu": [
             {
-              "label": "Toggle",
-              "command": "git-tabular-diff:toggle"
+              "label": "Compare Selected Files",
+              "command": "git-tabular-diff:compare-selected-files"
             }
           ]
         }

@@ -15,7 +15,7 @@ describe('GitTabularDiff', () => {
     activationPromise = atom.packages.activatePackage('git-tabular-diff');
   });
 
-  describe('when the git-tabular-diff:toggle event is triggered', () => {
+  describe('when the git-tabular-diff:compare-selected-files event is triggered', () => {
     it('hides and shows the modal panel', () => {
       // Before the activation event the view is not on the DOM, and no panel
       // has been created
@@ -23,7 +23,7 @@ describe('GitTabularDiff', () => {
 
       // This is an activation event, triggering it will cause the package to be
       // activated.
-      atom.commands.dispatch(workspaceElement, 'git-tabular-diff:toggle');
+      atom.commands.dispatch(workspaceElement, 'git-tabular-diff:compare-selected-files');
 
       waitsForPromise(() => {
         return activationPromise;
@@ -37,7 +37,7 @@ describe('GitTabularDiff', () => {
 
         let gitTabularDiffPanel = atom.workspace.panelForItem(gitTabularDiffElement);
         expect(gitTabularDiffPanel.isVisible()).toBe(true);
-        atom.commands.dispatch(workspaceElement, 'git-tabular-diff:toggle');
+        atom.commands.dispatch(workspaceElement, 'git-tabular-diff:compare-selected-files');
         expect(gitTabularDiffPanel.isVisible()).toBe(false);
       });
     });
@@ -55,7 +55,7 @@ describe('GitTabularDiff', () => {
 
       // This is an activation event, triggering it causes the package to be
       // activated.
-      atom.commands.dispatch(workspaceElement, 'git-tabular-diff:toggle');
+      atom.commands.dispatch(workspaceElement, 'git-tabular-diff:compare-selected-files');
 
       waitsForPromise(() => {
         return activationPromise;
@@ -65,7 +65,7 @@ describe('GitTabularDiff', () => {
         // Now we can test for view visibility
         let gitTabularDiffElement = workspaceElement.querySelector('.git-tabular-diff');
         expect(gitTabularDiffElement).toBeVisible();
-        atom.commands.dispatch(workspaceElement, 'git-tabular-diff:toggle');
+        atom.commands.dispatch(workspaceElement, 'git-tabular-diff:compare-selected-filesg');
         expect(gitTabularDiffElement).not.toBeVisible();
       });
     });
