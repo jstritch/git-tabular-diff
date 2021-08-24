@@ -16,9 +16,9 @@ const nonexistentText = 'Lorem ipsum dolor sit amet, consectetur adipiscing git 
 
 describe(methodName, () => {
 
-  afterEach(async function() {
+  afterEach(async function () {
     await fs.writeFile(verificationPath, verificationText);
-    try { await fs.unlink(nonexistentPath) } catch (e) { return; }
+    try { await fs.unlink(nonexistentPath); } catch (e) { return; }
   });
 
   it ('should read identical head and work for an unmodified file', async function () {
@@ -67,7 +67,7 @@ describe(methodName, () => {
   });
 
   it ('should detect no work version for a deleted file (nothing to compare against)', async function () {
-    try { await fs.unlink(verificationPath) } catch (e) { return; }
+    try { await fs.unlink(verificationPath); } catch (e) { return; }
 
     let gitFiles, errorMessage;
     try {
