@@ -22,18 +22,7 @@
         ]
       }
     ],
-    ".github-UnstagedChanges .github-FilePatchListView": [
-      {
-        "label": "Git Tabular Diff",
-        "submenu": [
-          {
-            "label": "Compare Selected Files",
-            "command": "git-tabular-diff:compare-selected-files"
-          }
-        ]
-      }
-    ],
-    ".github-StagedChanges .github-FilePatchListView": [
+    ".github-FilePatchListView": [
       {
         "label": "Git Tabular Diff",
         "submenu": [
@@ -44,21 +33,5 @@
         ]
       }
     ]
-  },
-  "menu": [
-    {
-      "label": "Packages",
-      "submenu": [
-        {
-          "label": "Git Tabular Diff",
-          "submenu": [
-            {
-              "label": "Compare Selected Files",
-              "command": "git-tabular-diff:compare-selected-files"
-            }
-          ]
-        }
-      ]
-    }
-  ]
+  }
 }

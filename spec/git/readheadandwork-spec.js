@@ -16,12 +16,12 @@ const nonexistentText = 'Lorem ipsum dolor sit amet, consectetur adipiscing git 
 
 describe(methodName, () => {
 
-  afterEach(async function () {
+  afterEach(async function() {
     await fs.writeFile(verificationPath, verificationText);
     try { await fs.unlink(nonexistentPath); } catch (e) { return; }
   });
 
-  it ('should read identical head and work for an unmodified file', async function () {
+  it('should read identical head and work for an unmodified file', async function() {
     let gitFiles, errorMessage;
     try {
       gitFiles = await git.readHeadAndWork(repositoryPath, verificationFile);
@@ -34,7 +34,7 @@ describe(methodName, () => {
     expect(errorMessage).not.toBeDefined();
   });
 
-  it ('should read correct head and work for a modified file', async function () {
+  it('should read correct head and work for a modified file', async function() {
     await fs.writeFile(verificationPath, nonexistentText);
 
     let gitFiles, errorMessage;
@@ -49,7 +49,7 @@ describe(methodName, () => {
     expect(errorMessage).not.toBeDefined();
   });
 
-  it ('should detect no head version for a new file (nothing to compare against)', async function () {
+  it('should detect no head version for a new file (nothing to compare against)', async function() {
     await fs.writeFile(nonexistentPath, nonexistentText);
 
     let gitFiles, errorMessage;
@@ -66,7 +66,7 @@ describe(methodName, () => {
     expect(errorMessage).toContain('not in \'HEAD\'');
   });
 
-  it ('should detect no work version for a deleted file (nothing to compare against)', async function () {
+  it('should detect no work version for a deleted file (nothing to compare against)', async function() {
     try { await fs.unlink(verificationPath); } catch (e) { return; }
 
     let gitFiles, errorMessage;
@@ -82,7 +82,7 @@ describe(methodName, () => {
     expect(errorMessage).toContain('no such file');
   });
 
-  it ('should detect any error reported by readHead() or readWork()', async function () {
+  it('should detect any error reported by readHead() or readWork()', async function() {
     let fileContents, errorMessage;
     try {
       fileContents = await git.readHeadAndWork(null, verificationFile);

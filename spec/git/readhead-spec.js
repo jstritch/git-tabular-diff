@@ -12,7 +12,7 @@ const nonexistentFile = 'spec/data/lorem ipsum.txt';
 
 describe(methodName, () => {
 
-  it ('should read an existing file', async function () {
+  it('should read an existing file', async function() {
     let fileContents, errorMessage;
     try {
       fileContents = await git.readHead(repositoryPath, verificationFile);
@@ -24,7 +24,7 @@ describe(methodName, () => {
     expect(errorMessage).not.toBeDefined();
   });
 
-  it ('should detect a null repositoryPath', async function () {
+  it('should detect a null repositoryPath', async function() {
     let fileContents, errorMessage;
     try {
       fileContents = await git.readHead(null, verificationFile);
@@ -38,7 +38,7 @@ describe(methodName, () => {
     expect(errorMessage).toContain('null');
   });
 
-  it ('should not try to create the git process with a nonexistent cwd', async function () {
+  it('should not try to create the git process with a nonexistent cwd', async function() {
     let fileContents, errorMessage;
     try {
       fileContents = await git.readHead(nonexistentPath, verificationFile);
@@ -53,7 +53,7 @@ describe(methodName, () => {
     expect(errorMessage).toContain('exist');
   });
 
-  it ('should detect a null relativePath', async function () {
+  it('should detect a null relativePath', async function() {
     let fileContents, errorMessage;
     try {
       fileContents = await git.readHead(repositoryPath, null);
@@ -67,7 +67,7 @@ describe(methodName, () => {
     expect(errorMessage).toContain('null');
   });
 
-  it ('should detect a git error', async function () {
+  it('should detect a git error', async function() {
     let fileContents, errorMessage;
     try {
       fileContents = await git.readHead(repositoryPath, nonexistentFile);

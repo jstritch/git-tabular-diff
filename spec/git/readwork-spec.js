@@ -10,7 +10,7 @@ const nonexistentFile = 'spec/data/lorem ipsum.txt';
 
 describe(methodName, () => {
 
-  it ('should read an existing file', async function () {
+  it('should read an existing file', async function() {
     let fileContents, errorMessage;
     try {
       fileContents = await git.readWork(repositoryPath, verificationFile);
@@ -22,7 +22,7 @@ describe(methodName, () => {
     expect(errorMessage).not.toBeDefined();
   });
 
-  it ('should detect a null repositoryPath', async function () {
+  it('should detect a null repositoryPath', async function() {
     let fileContents, errorMessage;
     try {
       fileContents = await git.readWork(null, verificationFile);
@@ -36,7 +36,7 @@ describe(methodName, () => {
     expect(errorMessage).toContain('null');
   });
 
-  it ('should detect a null relativePath', async function () {
+  it('should detect a null relativePath', async function() {
     let fileContents, errorMessage;
     try {
       fileContents = await git.readWork(repositoryPath, null);
@@ -50,7 +50,7 @@ describe(methodName, () => {
     expect(errorMessage).toContain('null');
   });
 
-  it ('should detect a read error', async function () {
+  it('should detect a read error', async function() {
     let fileContents, errorMessage;
     try {
       fileContents = await git.readWork(repositoryPath, nonexistentFile);
