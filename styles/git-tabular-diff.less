@@ -5,32 +5,41 @@
 @import "ui-variables";
 
 .git-tabular-diff {
-  overflow-y: scroll;
+  overflow: auto;
 
   .gtd-heading {
     color: @text-color-highlight;
+    white-space: nowrap;
+  }
+
+  .gtd-body {
+    overflow-x: scroll;
   }
 
   .gtd-table {
     width: 100%;
-    overflow: auto;
     font-family: monospace;
-  }
-
-  .gtd-thead {
-    background-color: @base-background-color;
-  }
-
-  .gtd-tbody {
+    white-space: nowrap;
+    border-collapse: separate;
     background-color: @input-background-color;
   }
 
-  .gtd-action {
+  .gtd-header-cell () {
     position: sticky;
-    left: 0;
-    z-index: 9999;
     color: @text-color-info;
     background-color: @base-background-color;
+  }
+
+  .gtd-columnheader-cell {
+    .gtd-header-cell();
+
+    top: 0;
+  }
+
+  .gtd-rowheader-cell {
+    .gtd-header-cell();
+
+    left: 0;
   }
 
   .gtd-changed-cell {
@@ -51,10 +60,6 @@
 
   .remove {
     color: @text-color-error;
-  }
-
-  .spec {
-    color: @text-color-info;
   }
 
   .conflict {

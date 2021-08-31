@@ -7,17 +7,26 @@
     "atomtest": true
   },
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:jsonc/recommended-with-jsonc"
   ],
   "parser": "@babel/eslint-parser",
+  "overrides": [
+    {
+      "files": ["*.json", "*.json5"],
+      "parser": "jsonc-eslint-parser"
+    }
+  ],
   "parserOptions": {
-    "ecmaVersion": 12,
+    "ecmaVersion": 2021,
     "sourceType": "module"
   },
   "plugins": [
     "@babel"
   ],
   "rules": {
+    "jsonc/auto": "error",
+
     "array-bracket-newline": ["error", "consistent"],
     "array-bracket-spacing": ["error", "never"],
     "arrow-body-style": ["error", "always"],
@@ -28,7 +37,7 @@
     "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
     "camelcase": "error",
     "comma-dangle": ["error", "only-multiline"],
-    "comma-spacing": ["error", {"before": false, "after": true}],
+    "comma-spacing": ["error", { "before": false, "after": true }],
     "comma-style": ["error", "last"],
     "computed-property-spacing": ["error", "never", { "enforceForClassMembers": true }],
     "curly": "error",
@@ -68,11 +77,11 @@
     "prefer-rest-params": "error",
     "prefer-spread": "error",
     "prefer-template": "error",
-    "rest-spread-spacing": ["error", "always"],
+    "rest-spread-spacing": ["error", "never"],
     "semi": "error",
     "semi-spacing": "error",
     "semi-style": ["error", "last"],
-    "sort-imports": "error",
+    "sort-imports": ["error", { "ignoreCase": true, "ignoreDeclarationSort": false }],
     "space-before-blocks": "error",
     "space-before-function-paren": ["error", "never"],
     "space-in-parens": ["error", "never"],

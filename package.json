@@ -2,12 +2,11 @@
   "name": "git-tabular-diff",
   "main": "./lib/git-tabular-diff",
   "version": "0.0.0",
-  "description": "Displays a tabular diff of json and csv files in an Atom pane.",
+  "description": "Displays a tabular diff of csv files in an Atom pane.",
   "keywords": [
     "git",
     "tabular",
     "diff",
-    "json",
     "csv",
     "daff"
   ],
@@ -21,7 +20,7 @@
   },
   "scripts": {
     "lint": "npm run lint:less & npm run lint:js",
-    "lint:js": "npx eslint --ignore-path .gitignore .",
+    "lint:js": "npx eslint --ext .js,.json --ignore-path .gitignore .",
     "lint:less": "npx stylelint styles",
     "test": "atom --test spec"
   },
@@ -36,6 +35,7 @@
     "@babel/preset-env": "^7.15.0",
     "@primer/css": "^17.6.0",
     "eslint": "^7.32.0",
+    "eslint-plugin-jsonc": "^1.6.0",
     "stylelint": "^13.13.1",
     "stylelint-config-primer": "^11.0.1",
     "stylelint-config-standard": "^22.0.0"
