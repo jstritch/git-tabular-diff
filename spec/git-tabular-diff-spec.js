@@ -1,75 +1,77 @@
 'use babel';
 
+import { promises as fs } from 'fs';
 import GitTabularDiff from '../lib/git-tabular-diff';
+import GitTabularDiffView from '../lib/git-tabular-diff-view';
+import path from 'path';
 
-// Use the command `window:run-package-specs` (cmd-alt-ctrl-p) to run specs.
-//
-// To run a specific `it` or `describe` block add an `f` to the front (e.g. `fit`
-// or `fdescribe`). Remove the `f` to unfocus the block.
+const methodName = 'GitTabularDiff.compareSelectedFiles()';
+const repositoryPath = process.cwd();
 
-describe('GitTabularDiff', () => {
-/*
-  let workspaceElement, activationPromise;
+const verificationFile = 'spec/data/git-test-file.txt';
+const verificationPath = path.format({ dir: repositoryPath, base: verificationFile });
+const verificationText = 'git-tabular-diff verification file spec/data/git-test-file.txt\n';
+const nonexistentFile = 'spec/data/lorem ipsum.txt';
+const nonexistentText = 'Lorem ipsum dolor sit amet, consectetur adipiscing git tabular diff\n';
+const exampleFile = 'spec/data/example.csv';
+const examplePath = path.format({ dir: repositoryPath, base: exampleFile });
+const exampleCopyFile = 'spec/data/example-copy.csv';
+const exampleCopyPath = path.format({ dir: repositoryPath, base: exampleCopyFile });
+const exampleModifiedFile = 'spec/data/example-modified.csv';
+const exampleModifiedPath = path.format({ dir: repositoryPath, base: exampleModifiedFile });
 
-  beforeEach(() => {
-    workspaceElement = atom.views.getView(atom.workspace);
-    activationPromise = atom.packages.activatePackage('git-tabular-diff');
+function makeFileSelector(file) {
+  return {
+    getSelectedFiles() {
+      return [{
+        repositoryPath: repositoryPath,
+        relativePath: file
+      }];
+    }
+  };
+}
+
+describe(methodName, function() {
+
+  beforeEach(async function() {
+    await fs.writeFile(verificationPath, nonexistentText);
+    await fs.copyFile(exampleModifiedPath, examplePath);
   });
 
-  describe('when the git-tabular-diff:compare-selected-files event is triggered', () => {
-    it('hides and shows the modal panel', () => {
-      // Before the activation event the view is not on the DOM, and no panel
-      // has been created
-      expect(workspaceElement.querySelector('.git-tabular-diff')).not.toExist();
+  afterEach(async function() {
+    await fs.writeFile(verificationPath, verificationText);
+    await fs.copyFile(exampleCopyPath, examplePath);
+  });
 
-      // This is an activation event, triggering it will cause the package to be
-      // activated.
-      atom.commands.dispatch(workspaceElement, 'git-tabular-diff:compare-selected-files');
+  [exampleFile, verificationFile].forEach((file) => {
+    it(`opens a view for modified file ${file}`, async function() {
+      GitTabularDiff.activate(null);
+      GitTabularDiff.fileSelector = makeFileSelector(file);
+      const id = await GitTabularDiff.compareSelectedFiles();
 
-      waitsForPromise(() => {
-        return activationPromise;
-      });
+      expect(id.length).toBe(36);
+      const workspaceElement = atom.views.getView(atom.workspace);
+      expect(workspaceElement).toExist();
+      const gitTabularDiffElement = workspaceElement.querySelector(`[id='${id}']`);
+      expect(gitTabularDiffElement).toExist();
+      expect(gitTabularDiffElement).toHaveClass('git-tabular-diff');
 
-      runs(() => {
-        expect(workspaceElement.querySelector('.git-tabular-diff')).toExist();
-
-        let gitTabularDiffElement = workspaceElement.querySelector('.git-tabular-diff');
-        expect(gitTabularDiffElement).toExist();
-
-        let gitTabularDiffPanel = atom.workspace.panelForItem(gitTabularDiffElement);
-        expect(gitTabularDiffPanel.isVisible()).toBe(true);
-        atom.commands.dispatch(workspaceElement, 'git-tabular-diff:compare-selected-files');
-        expect(gitTabularDiffPanel.isVisible()).toBe(false);
-      });
-    });
-
-    it('hides and shows the view', () => {
-      // This test shows you an integration test testing at the view level.
-
-      // Attaching the workspaceElement to the DOM is required to allow the
-      // `toBeVisible()` matchers to work. Anything testing visibility or focus
-      // requires that the workspaceElement is on the DOM. Tests that attach the
-      // workspaceElement to the DOM are generally slower than those off DOM.
-      jasmine.attachToDOM(workspaceElement);
-
-      expect(workspaceElement.querySelector('.git-tabular-diff')).not.toExist();
-
-      // This is an activation event, triggering it causes the package to be
-      // activated.
-      atom.commands.dispatch(workspaceElement, 'git-tabular-diff:compare-selected-files');
-
-      waitsForPromise(() => {
-        return activationPromise;
-      });
-
-      runs(() => {
-        // Now we can test for view visibility
-        let gitTabularDiffElement = workspaceElement.querySelector('.git-tabular-diff');
-        expect(gitTabularDiffElement).toBeVisible();
-        atom.commands.dispatch(workspaceElement, 'git-tabular-diff:compare-selected-filesg');
-        expect(gitTabularDiffElement).not.toBeVisible();
-      });
+      expect(GitTabularDiffView.pendingFileDiffs.size).toBe(0);
     });
   });
-*/
+
+  [nonexistentFile, exampleCopyFile].forEach((file) => {
+    it(`does not open a view for ${file}`, async function() {
+      GitTabularDiff.activate(null);
+      GitTabularDiff.fileSelector = makeFileSelector(file);
+      const id = await GitTabularDiff.compareSelectedFiles();
+
+      expect(id).toBeNull();
+      const workspaceElement = atom.views.getView(atom.workspace);
+      expect(workspaceElement).toExist();
+      expect(workspaceElement.querySelector('.git-tabular-diff')).not.toExist();
+
+      expect(GitTabularDiffView.pendingFileDiffs.size).toBe(0);
+    });
+  });
 });

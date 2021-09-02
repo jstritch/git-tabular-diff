@@ -8,15 +8,16 @@
   },
   "extends": [
     "eslint:recommended",
+    "plugin:import/recommended",
     "plugin:jsonc/recommended-with-jsonc"
   ],
-  "parser": "@babel/eslint-parser",
   "overrides": [
     {
       "files": ["*.json", "*.json5"],
       "parser": "jsonc-eslint-parser"
     }
   ],
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": 2021,
     "sourceType": "module"
@@ -24,6 +25,9 @@
   "plugins": [
     "@babel"
   ],
+  "settings": {
+    "import/core-modules": ["atom"]
+  },
   "rules": {
     "jsonc/auto": "error",
 
@@ -40,6 +44,7 @@
     "comma-spacing": ["error", { "before": false, "after": true }],
     "comma-style": ["error", "last"],
     "computed-property-spacing": ["error", "never", { "enforceForClassMembers": true }],
+    "consistent-return": "error",
     "curly": "error",
     "default-case-last": "error",
     "default-param-last": ["error"],
@@ -62,8 +67,10 @@
     "no-eval": "error",
     "no-extra-semi": "error",
     "no-lonely-if": "error",
-    "no-multi-spaces": "error",
+    "no-multi-spaces": ["error", { "ignoreEOLComments": true }],
     "no-multiple-empty-lines": ["error", { "max": 1, "maxBOF": 0, "maxEOF": 1 }],
+    "no-return-assign": "error",
+    "no-return-await": "error",
     "no-shadow": "error",
     "no-tabs": "error",
     "no-template-curly-in-string": "error",

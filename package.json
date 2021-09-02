@@ -18,6 +18,7 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
+  "atomTestRunner": "./spec/custom-runner",
   "scripts": {
     "lint": "npm run lint:less & npm run lint:js",
     "lint:js": "npx eslint --ext .js,.json --ignore-path .gitignore .",
@@ -33,11 +34,11 @@
     "@babel/eslint-parser": "^7.15.0",
     "@babel/eslint-plugin": "^7.14.5",
     "@babel/preset-env": "^7.15.0",
-    "@primer/css": "^17.6.0",
+    "atom-jasmine3-test-runner": "^5.2.8",
     "eslint": "^7.32.0",
+    "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-jsonc": "^1.6.0",
     "stylelint": "^13.13.1",
-    "stylelint-config-primer": "^11.0.1",
-    "stylelint-config-standard": "^22.0.0"
+    "stylelint-config-primer": "^11.0.1"
   }
 }
