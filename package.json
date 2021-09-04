@@ -13,6 +13,9 @@
   "activationCommands": {
     "atom-workspace": "git-tabular-diff:compare-selected-files"
   },
+  "deserializers": {
+    "GitTabularDiffView": "deserializeGitTabularDiffView"
+  },
   "repository": "https://github.com/jstritch/git-tabular-diff",
   "license": "MIT",
   "engines": {
@@ -34,6 +37,7 @@
     "@babel/eslint-parser": "^7.15.0",
     "@babel/eslint-plugin": "^7.14.5",
     "@babel/preset-env": "^7.15.0",
+    "@primer/css": "^17.8.0",
     "atom-jasmine3-test-runner": "^5.2.8",
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.24.2",

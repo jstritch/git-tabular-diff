@@ -8,10 +8,10 @@ const methodName = 'git.readHeadAndWork()';
 const gitCommand = 'git show HEAD:';
 const repositoryPath = process.cwd();
 const verificationFile = 'spec/data/git-test-file.txt';
-const verificationPath = path.format({ dir: repositoryPath, base: verificationFile });
+const verificationPath = path.join(repositoryPath, verificationFile);
 const verificationText = 'git-tabular-diff verification file spec/data/git-test-file.txt\n';
 const nonexistentFile = 'spec/data/lorem ipsum.txt';
-const nonexistentPath = path.format({ dir: repositoryPath, base: nonexistentFile });
+const nonexistentPath = path.join(repositoryPath, nonexistentFile);
 const nonexistentText = 'Lorem ipsum dolor sit amet, consectetur adipiscing git tabular diff\n';
 
 describe(methodName, () => {
