@@ -2,12 +2,14 @@
   "name": "git-tabular-diff",
   "main": "./lib/git-tabular-diff",
   "version": "0.0.0",
-  "description": "Displays a tabular diff of csv files in an Atom pane.",
+  "description": "Displays a tabular difference of csv files in an Atom pane.",
   "keywords": [
-    "git",
-    "tabular",
+    "compare",
     "diff",
     "csv",
+    "data table",
+    "tabular",
+    "git",
     "daff"
   ],
   "activationCommands": {
@@ -17,6 +19,7 @@
     "GitTabularDiffView": "deserializeGitTabularDiffView"
   },
   "repository": "https://github.com/jstritch/git-tabular-diff",
+  "author": "John Stritch",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
@@ -37,7 +40,6 @@
     "@babel/eslint-parser": "^7.15.0",
     "@babel/eslint-plugin": "^7.14.5",
     "@babel/preset-env": "^7.15.0",
-    "@primer/css": "^17.8.0",
     "atom-jasmine3-test-runner": "^5.2.8",
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.24.2",

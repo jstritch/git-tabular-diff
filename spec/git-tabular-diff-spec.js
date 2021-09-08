@@ -19,6 +19,7 @@ const exampleCopyFile = 'spec/data/example-copy.csv';
 const exampleCopyPath = path.join(repositoryPath, exampleCopyFile);
 const exampleModifiedFile = 'spec/data/example-modified.csv';
 const exampleModifiedPath = path.join(repositoryPath, exampleModifiedFile);
+const exampleSavedDiffFile = 'spec/data/example-saved.csv.gtd';
 
 describe(methodName, function() {
 
@@ -32,7 +33,7 @@ describe(methodName, function() {
     await fs.copyFile(exampleCopyPath, examplePath);
   });
 
-  [exampleFile, verificationFile].forEach((file) => {
+  [exampleFile, verificationFile, exampleSavedDiffFile].forEach((file) => {
     it(`opens a view for modified file ${file}`, async function() {
       GitTabularDiff.activate(null);
       GitTabularDiff.fileSelector = helper.makeFileSelector(repositoryPath, file);
