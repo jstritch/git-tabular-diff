@@ -1,12 +1,13 @@
 'use babel';
 
 import * as git from '../../lib/git';
+import path from 'path';
 
 const methodName = 'git.readWork()';
 const repositoryPath = process.cwd();
-const verificationFile = 'spec/data/git-test-file.txt';
+const verificationFile = path.join('spec', 'data', 'git-test-file.txt');
 const verificationText = 'git-tabular-diff verification file spec/data/git-test-file.txt\n';
-const nonexistentFile = 'spec/data/lorem ipsum.txt';
+const nonexistentFile = path.join('spec', 'data', 'lorem ipsum.txt');
 
 describe(methodName, () => {
 

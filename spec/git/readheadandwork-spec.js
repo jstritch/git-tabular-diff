@@ -7,10 +7,10 @@ import path from 'path';
 const methodName = 'git.readHeadAndWork()';
 const gitCommand = 'git show HEAD:';
 const repositoryPath = process.cwd();
-const verificationFile = 'spec/data/git-test-file.txt';
+const verificationFile = path.join('spec', 'data', 'git-test-file.txt');
 const verificationPath = path.join(repositoryPath, verificationFile);
 const verificationText = 'git-tabular-diff verification file spec/data/git-test-file.txt\n';
-const nonexistentFile = 'spec/data/lorem ipsum.txt';
+const nonexistentFile = path.join('spec', 'data', 'lorem ipsum.txt');
 const nonexistentPath = path.join(repositoryPath, nonexistentFile);
 const nonexistentText = 'Lorem ipsum dolor sit amet, consectetur adipiscing git tabular diff\n';
 
@@ -62,7 +62,7 @@ describe(methodName, () => {
     expect(gitFiles).not.toBeDefined();
     expect(errorMessage).toContain(gitCommand);
     expect(errorMessage).toContain(repositoryPath);
-    expect(errorMessage).toContain(nonexistentFile);
+    expect(errorMessage).toContain(git.gitPath(nonexistentFile));
     expect(errorMessage).toContain('not in \'HEAD\'');
   });
 

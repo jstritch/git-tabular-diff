@@ -8,18 +8,18 @@ import path from 'path';
 
 const methodName = 'GitTabularDiff.compareSelectedFiles()';
 const repositoryPath = process.cwd();
-const verificationFile = 'spec/data/git-test-file.txt';
+const verificationFile = path.join('spec', 'data', 'git-test-file.txt');
 const verificationPath = path.join(repositoryPath, verificationFile);
 const verificationText = 'git-tabular-diff verification file spec/data/git-test-file.txt\n';
-const nonexistentFile = 'spec/data/lorem ipsum.txt';
+const nonexistentFile = path.join('spec', 'data', 'lorem ipsum.txt');
 const nonexistentText = 'Lorem ipsum dolor sit amet, consectetur adipiscing git tabular diff\n';
-const exampleFile = 'spec/data/example.csv';
+const exampleFile = path.join('spec', 'data', 'example.csv');
 const examplePath = path.join(repositoryPath, exampleFile);
-const exampleCopyFile = 'spec/data/example-copy.csv';
+const exampleCopyFile = path.join('spec', 'data', 'example-copy.csv');
 const exampleCopyPath = path.join(repositoryPath, exampleCopyFile);
-const exampleModifiedFile = 'spec/data/example-modified.csv';
+const exampleModifiedFile = path.join('spec', 'data', 'example-modified.csv');
 const exampleModifiedPath = path.join(repositoryPath, exampleModifiedFile);
-const exampleSavedDiffFile = 'spec/data/example-saved.csv.gtd';
+const exampleSavedDiffFile = path.join('spec', 'data', 'example-saved.csv.gtd');
 
 describe(methodName, function() {
 

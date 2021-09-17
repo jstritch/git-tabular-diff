@@ -7,18 +7,18 @@ import GitTabularDiffView from '../lib/git-tabular-diff-view';
 import path from 'path';
 
 const repositoryPath = process.cwd();
-const exampleFile = 'spec/data/example.csv';
+const exampleFile = path.join('spec', 'data', 'example.csv');
 const examplePath = path.join(repositoryPath, exampleFile);
-const exampleCopyFile = 'spec/data/example-copy.csv';
+const exampleCopyFile = path.join('spec', 'data', 'example-copy.csv');
 const exampleCopyPath = path.join(repositoryPath, exampleCopyFile);
-const exampleModifiedFile = 'spec/data/example-modified.csv';
+const exampleModifiedFile = path.join('spec', 'data', 'example-modified.csv');
 const exampleModifiedPath = path.join(repositoryPath, exampleModifiedFile);
 
 const saveAsFile = `${exampleFile}${GitTabularDiffView.getFileExtension()}`;
 const saveAsPath = `${examplePath}${GitTabularDiffView.getFileExtension()}`;
-const goodSaveAsFile = 'spec/data/example-saved.csv.gtd';
-const goodSaveAsIgnoreCaseFile = 'spec/data/example-saved-ignorecase.csv.gtd';
-const goodSaveAsIgnoreWhitespaceFile = 'spec/data/example-saved-ignorewhitespace.csv.gtd';
+const goodSaveAsFile = path.join('spec', 'data', 'example-saved.csv.gtd');
+const goodSaveAsIgnoreCaseFile = path.join('spec', 'data', 'example-saved-ignorecase.csv.gtd');
+const goodSaveAsIgnoreWhitespaceFile = path.join('spec', 'data', 'example-saved-ignorewhitespace.csv.gtd');
 
 describe('GitTabularDiffView.serialize()', function() {
   let ignoreCase, ignoreWhitespace;
