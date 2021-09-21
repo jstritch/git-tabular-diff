@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [v1-dev]
+  pull_request: {}
+
+jobs:
+  build:
+
+    strategy:
+      matrix:
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        # See supported os at https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners
+        node-version: [12, 14, 16]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    runs-on: ${{ matrix.os }}
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - name: Show versions
+      run: apm --version
+    - name: Install
+      run: npm ci
+    - name: Lint
+      run: npm run lint
+    - name: Build
+      run: npm run build --if-present
+    - name: Test
+      run: npm test
