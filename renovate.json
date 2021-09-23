@@ -1,0 +1,20 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "baseBranches": ["v1-dev"],
+  "packageRules": [
+    {
+      "matchDatasources": ["npm"],
+      "stabilityDays": 3
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "automerge": true,
+      "automergeType": "branch"
+    }
+  ],
+  "rangeStrategy": "bump",
+  "timezone": "America/Chicago",
+  "schedule": "every weekend"
+}
