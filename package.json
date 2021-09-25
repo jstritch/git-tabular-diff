@@ -41,7 +41,7 @@
     "@babel/eslint-plugin": "^7.14.5",
     "@babel/preset-env": "^7.15.6",
     "@primer/css": "^17.11.0",
-    "@primer/primitives": "^4.7.1",
+    "@primer/primitives": "^4.8.1",
     "atom-jasmine3-test-runner": "^5.2.8",
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.24.2",
