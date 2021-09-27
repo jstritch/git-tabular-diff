@@ -12,9 +12,13 @@
       "matchDepTypes": ["devDependencies"],
       "automerge": true,
       "automergeType": "branch"
+    },
+    {
+      "matchPackagePatterns": ["^eslint"],
+      "groupName": "eslint packages"
     }
   ],
   "rangeStrategy": "bump",
   "timezone": "America/Chicago",
-  "schedule": "every weekend"
+  "schedule": "before 5am every weekday"
 }
