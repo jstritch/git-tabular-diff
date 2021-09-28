@@ -1,14 +1,15 @@
-[![CI Status](https://github.com/jstritch/git-tabular-diff/workflows/CI/badge.svg)](https://github.com/jstritch/git-tabular-diff/actions)
+[![Renovate Status](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
 [![Dependency Status](https://david-dm.org/jstritch/git-tabular-diff.svg)](https://david-dm.org/jstritch/git-tabular-diff)
 [![DevDependency Status](https://david-dm.org/jstritch/git-tabular-diff/dev-status.svg)](https://david-dm.org/jstritch/git-tabular-diff#info=devDependencies)
+[![CI Status](https://github.com/jstritch/git-tabular-diff/workflows/CI/badge.svg)](https://github.com/jstritch/git-tabular-diff/actions)
 
 # git-tabular-diff
 
-It is difficult to easily review changes made to csv files with a traditional Git difference.
+It is difficult to review changes made to csv files by viewing a traditional Git difference.
 The git-tabular-diff package helps Atom users review changes made to csv files.
-The screenshot below shows a Git diff on the left and the git-tabular-diff of the same change on the right.
+The screenshot below shows a Git diff on the left and the git-tabular-diff view of the same changes on the right.
 
-![comparison screenshot](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+![comparison screenshot](https://github.com/jstritch/git-tabular-diff/blob/main/example.gif?raw=true)
 
 To use git-tabular-diff, select a csv file in the TreeView, Git panel,
 or the active text editor and invoke the git-tabular-diff:compare-selected-files command.
