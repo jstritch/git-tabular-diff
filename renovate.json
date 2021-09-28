@@ -2,7 +2,7 @@
   "extends": [
     "config:base"
   ],
-  "baseBranches": ["v1-dev"],
+  "baseBranches": ["main"],
   "packageRules": [
     {
       "matchDatasources": ["npm"],
@@ -16,6 +16,10 @@
     {
       "matchPackagePatterns": ["^eslint"],
       "groupName": "eslint packages"
+    },
+    {
+      "matchPackagePatterns": ["^stylelint", "^@primer"],
+      "groupName": "stylelint packages"
     }
   ],
   "rangeStrategy": "bump",
