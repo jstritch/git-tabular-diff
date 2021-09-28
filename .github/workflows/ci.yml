@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [v1-dev]
+    branches: [main]
   pull_request: {}
 
 jobs:
@@ -16,21 +16,31 @@ jobs:
         os: [ubuntu-latest, macos-latest, windows-latest]
 
     runs-on: ${{ matrix.os }}
-    
+
     steps:
     - uses: actions/checkout@v2
+    - uses: UziTech/action-setup-atom@v2
+      with:
+        version: stable
     - name: Use Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - name: Show versions
+    - name: Show apm version
       run: apm --version
-    - name: Install
+    - name: Show npm version
+      run: npm --version
+    - name: Show node version
+      run: node --version
+    - name: Show atom version
+      run: atom --version
+    - name: Show git version
+      run: git --version
+    - name: Install git-tabular-diff
       run: npm ci
-    - name: Lint
+    - name: Lint the source
       run: npm run lint
     - name: Build
       run: npm run build --if-present
-    - name: Test
+    - name: Run automated tests
       run: npm test
