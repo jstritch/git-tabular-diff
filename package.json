@@ -1,7 +1,7 @@
 {
   "name": "git-tabular-diff",
   "main": "./lib/git-tabular-diff",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Displays a tabular difference of csv files in an Atom pane.",
   "keywords": [
     "compare",
