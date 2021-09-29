@@ -2,7 +2,7 @@
   "extends": [
     "config:base"
   ],
-  "baseBranches": ["main"],
+  "baseBranches": ["master"],
   "packageRules": [
     {
       "matchDatasources": ["npm"],
