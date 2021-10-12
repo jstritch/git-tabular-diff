@@ -44,7 +44,7 @@
     "@primer/css": "^18.0.1",
     "@primer/primitives": "^5.0.0",
     "atom-jasmine3-test-runner": "^5.2.8",
-    "eslint": "^7.32.0",
+    "eslint": "^8.0.0",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-jsonc": "^1.7.0",
     "stylelint": "^13.13.1",
