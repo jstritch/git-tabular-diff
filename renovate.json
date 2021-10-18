@@ -18,11 +18,11 @@
       "groupName": "eslint packages"
     },
     {
-      "matchPackagePatterns": ["^stylelint", "^@primer"],
+      "matchPackagePatterns": ["^stylelint"],
       "groupName": "stylelint packages"
     }
   ],
   "rangeStrategy": "bump",
   "timezone": "America/Chicago",
-  "schedule": "before 5am every weekday"
+  "schedule": "before 5am"
 }

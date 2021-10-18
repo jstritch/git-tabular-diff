@@ -1,5 +1,5 @@
 {
   "extends": [
-    "stylelint-config-primer"
+    "stylelint-config-idiomatic-order"
   ]
 }
