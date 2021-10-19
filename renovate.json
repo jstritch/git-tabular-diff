@@ -22,6 +22,8 @@
       "groupName": "stylelint packages"
     }
   ],
+  "prHourlyLimit": 5,
+  "prConcurrentLimit": 5,
   "rangeStrategy": "bump",
   "timezone": "America/Chicago",
   "schedule": "before 5am"

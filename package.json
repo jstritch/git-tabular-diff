@@ -27,7 +27,7 @@
   },
   "atomTestRunner": "./spec/custom-runner",
   "scripts": {
-    "lint": "npm run lint:less & npm run lint:js",
+    "lint": "npm run lint:less && npm run lint:js",
     "lint:js": "npx eslint --ext .js,.json --ignore-path .gitignore .",
     "lint:less": "npx stylelint styles",
     "test": "atom --test spec"
