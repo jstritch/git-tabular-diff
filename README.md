@@ -1,6 +1,4 @@
 [![Renovate Status](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
-[![Dependency Status](https://david-dm.org/jstritch/git-tabular-diff.svg)](https://david-dm.org/jstritch/git-tabular-diff)
-[![DevDependency Status](https://david-dm.org/jstritch/git-tabular-diff/dev-status.svg)](https://david-dm.org/jstritch/git-tabular-diff#info=devDependencies)
 [![CI Status](https://github.com/jstritch/git-tabular-diff/workflows/CI/badge.svg)](https://github.com/jstritch/git-tabular-diff/actions)
 
 # git-tabular-diff
