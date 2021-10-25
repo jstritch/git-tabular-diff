@@ -27,9 +27,7 @@
   },
   "atomTestRunner": "./spec/custom-runner",
   "scripts": {
-    "lint": "npm run lint:less && npm run lint:js",
-    "lint:js": "npx eslint --ext .js,.json --ignore-path .gitignore .",
-    "lint:less": "npx stylelint styles",
+    "lint": "npx eslint --ext .js,.json --ignore-path .gitignore .",
     "test": "atom --test spec"
   },
   "dependencies": {
@@ -44,8 +42,6 @@
     "atom-jasmine3-test-runner": "^5.2.9",
     "eslint": "^8.0.1",
     "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-jsonc": "^1.7.0",
-    "stylelint": "^14.0.0",
-    "stylelint-config-idiomatic-order": "^8.1.0"
+    "eslint-plugin-jsonc": "^1.7.0"
   }
 }

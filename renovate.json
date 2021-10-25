@@ -16,10 +16,6 @@
     {
       "matchPackagePatterns": ["^eslint"],
       "groupName": "eslint packages"
-    },
-    {
-      "matchPackagePatterns": ["^stylelint"],
-      "groupName": "stylelint packages"
     }
   ],
   "prHourlyLimit": 5,
