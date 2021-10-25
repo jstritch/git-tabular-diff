@@ -27,16 +27,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - name: Show apm version
-      run: apm --version
-    - name: Show npm version
-      run: npm --version
-    - name: Show node version
-      run: node --version
-    - name: Show atom version
-      run: atom --version
-    - name: Show git version
-      run: git --version
     - name: Install git-tabular-diff
       run: npm ci
     - name: Lint the source
