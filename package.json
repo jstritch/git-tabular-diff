@@ -22,6 +22,7 @@
   "repository": "https://github.com/jstritch/git-tabular-diff",
   "author": "John Stritch",
   "license": "MIT",
+  "funding": "https://github.com/sponsors/jstritch",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
