@@ -42,7 +42,7 @@
     "@babel/preset-env": "^7.16.0",
     "atom-jasmine3-test-runner": "^5.2.9",
     "eslint": "^8.2.0",
-    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsonc": "^2.0.0"
   }
 }
