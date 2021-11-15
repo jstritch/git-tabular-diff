@@ -9,15 +9,12 @@
       "stabilityDays": 3
     },
     {
-      "matchDepTypes": ["devDependencies"],
-      "automerge": true,
-      "automergeType": "branch"
-    },
-    {
       "matchPackagePatterns": ["^eslint"],
       "groupName": "eslint packages"
     }
   ],
+  "automerge": true,
+  "automergeType": "branch",
   "prHourlyLimit": 5,
   "prConcurrentLimit": 5,
   "rangeStrategy": "bump",
