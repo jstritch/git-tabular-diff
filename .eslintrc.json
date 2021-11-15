@@ -8,14 +8,7 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:import/recommended",
-    "plugin:jsonc/recommended-with-jsonc"
-  ],
-  "overrides": [
-    {
-      "files": ["*.json", "*.json5"],
-      "parser": "jsonc-eslint-parser"
-    }
+    "plugin:import/recommended"
   ],
   "parser": "@babel/eslint-parser",
   "parserOptions": {
@@ -29,8 +22,6 @@
     "import/core-modules": ["atom"]
   },
   "rules": {
-    "jsonc/auto": "error",
-
     "array-bracket-newline": ["error", "consistent"],
     "array-bracket-spacing": ["error", "never"],
     "arrow-body-style": ["error", "always"],
@@ -98,5 +89,17 @@
     "switch-colon-spacing": "error",
     "template-curly-spacing": ["error", "never"],
     "quotes": ["error", "single", { "allowTemplateLiterals": true }]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.json"],
+      "parser": "jsonc-eslint-parser",
+      "extends": [
+        "plugin:jsonc/recommended-with-jsonc"
+      ],
+      "rules": {
+        "jsonc/auto": "error"
+      }
+    }
+  ]
 }
