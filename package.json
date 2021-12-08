@@ -14,7 +14,10 @@
     "daff"
   ],
   "activationCommands": {
-    "atom-workspace": "git-tabular-diff:compare-selected-files"
+    "atom-workspace": [
+      "git-tabular-diff:compare-selected-files",
+      "git-tabular-diff:compare-selected-split"
+    ]
   },
   "deserializers": {
     "GitTabularDiffView": "deserializeGitTabularDiffView"
