@@ -2,7 +2,7 @@
   "name": "git-tabular-diff",
   "main": "./lib/git-tabular-diff",
   "version": "1.0.2",
-  "description": "Displays a tabular difference of csv files in an Atom pane.",
+  "description": "Displays a tabular or split difference of csv and text files in an Atom pane.",
   "keywords": [
     "compare",
     "diff",
@@ -10,8 +10,10 @@
     "data",
     "table",
     "tabular",
+    "split",
     "git",
-    "daff"
+    "daff",
+    "diff2html"
   ],
   "activationCommands": {
     "atom-workspace": [
@@ -36,6 +38,7 @@
   },
   "dependencies": {
     "daff": "^1.3.47",
+    "diff2html": "^3.4.13",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
