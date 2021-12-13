@@ -2,7 +2,7 @@
   "name": "git-tabular-diff",
   "main": "./lib/git-tabular-diff",
   "version": "1.0.2",
-  "description": "Displays a tabular or split difference of csv and text files in an Atom pane.",
+  "description": "Displays tabular and split differences of csv and text files in Atom panes.",
   "keywords": [
     "compare",
     "diff",
@@ -33,7 +33,9 @@
   },
   "atomTestRunner": "./spec/custom-runner",
   "scripts": {
-    "lint": "npx eslint --ext .js,.json --ignore-path .gitignore .",
+    "lint": "npm run lint:less && npm run lint:js",
+    "lint:js": "npx eslint --ext .js,.json --ignore-path .gitignore .",
+    "lint:less": "npx stylelint styles",
     "test": "atom --test spec"
   },
   "dependencies": {
@@ -49,6 +51,10 @@
     "atom-jasmine3-test-runner": "^5.2.9",
     "eslint": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jsonc": "^2.0.0"
+    "eslint-plugin-jsonc": "^2.0.0",
+    "postcss-less": "^5.0.0",
+    "stylelint": "^14.1.0",
+    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-config-standard": "^24.0.0"
   }
 }
