@@ -5,6 +5,12 @@
 @import "ui-variables";
 
 .git-tabular-diff {
+
+  @delete-background-color: fadeout(@background-color-error, 80%);
+  @delete-highlight-color: fadeout(@background-color-error, 70%);
+  @insert-background-color: fadeout(@background-color-success, 80%);
+  @insert-highlight-color: fadeout(@background-color-success, 70%);
+
   overflow: auto;
 
   .gtd-heading {
@@ -16,6 +22,7 @@
     overflow-x: visible;
   }
 
+  .d2h-files-diff,
   .gtd-table {
     width: 100%;
     background-color: @input-background-color;
@@ -28,6 +35,7 @@
     position: sticky;
     background-color: @base-background-color;
     color: @text-color-info;
+    font-weight: normal;
   }
 
   .gtd-columnheader-cell {
@@ -60,5 +68,64 @@
 
   .remove {
     color: @text-color-error;
+  }
+
+  .d2h-file-header {
+    display: none;
+  }
+
+  .d2h-file-side-diff {
+    display: inline-block;
+    width: 50%;
+    overflow-x: scroll;
+  }
+
+  .d2h-code-side-linenumber,
+  .d2h-code-side-linenumber.d2h-del,
+  .d2h-code-side-linenumber.d2h-ins {
+    padding-left: 0.2em;
+    background-color: @base-background-color;
+    color: @text-color-info;
+    text-align: right;
+  }
+
+  .d2h-info {
+    background-color: @base-background-color;
+    color: @text-color-info;
+  }
+
+  .d2h-ins {
+    background-color: @insert-background-color;
+  }
+
+  .d2h-del {
+    background-color: @delete-background-color;
+  }
+
+  .d2h-code-side-line {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .d2h-code-line-prefix {
+    display: inline-block;
+    padding-right: 0.3em;
+    padding-left: 0.3em;
+    background-color: @base-background-color;
+    color: @text-color-info;
+  }
+
+  .d2h-code-line-ctn {
+    white-space: pre;
+  }
+
+  .d2h-code-side-line del {
+    background-color: @delete-highlight-color;
+    text-decoration: none;
+  }
+
+  .d2h-code-side-line ins {
+    background-color: @insert-highlight-color;
+    text-decoration: none;
   }
 }

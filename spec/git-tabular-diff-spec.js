@@ -21,6 +21,13 @@ const exampleModifiedFile = path.join('spec', 'data', 'example-modified.csv');
 const exampleModifiedPath = path.join(repositoryPath, exampleModifiedFile);
 const exampleSavedDiffFile = path.join('spec', 'data', 'example-saved.csv.gtd');
 
+function openView(split) {
+  if (!split) {
+    return GitTabularDiff.compareSelectedFiles();
+  }
+  return GitTabularDiff.compareSelectedSplit();
+}
+
 describe(methodName, function() {
 
   beforeEach(async function() {
@@ -33,35 +40,39 @@ describe(methodName, function() {
     await fs.copyFile(exampleCopyPath, examplePath);
   });
 
-  [exampleFile, verificationFile, exampleSavedDiffFile].forEach((file) => {
-    it(`opens a view for modified file ${file}`, async function() {
-      GitTabularDiff.activate(null);
-      GitTabularDiff.fileSelector = helper.makeFileSelector(repositoryPath, file);
-      const id = await GitTabularDiff.compareSelectedFiles();
+  [false, true].forEach((split) => {
+    [exampleFile, verificationFile, exampleSavedDiffFile].forEach((file) => {
+      it(`opens a view for modified file ${file}`, async function() {
+        GitTabularDiff.activate(null);
+        GitTabularDiff.fileSelector = helper.makeFileSelector(repositoryPath, file);
+        const id = await openView(split);
 
-      expect(id.length).toBe(36);
-      const workspaceElement = atom.views.getView(atom.workspace);
-      expect(workspaceElement).toExist();
-      const gitTabularDiffElement = workspaceElement.querySelector(`[id='${id}']`);
-      expect(gitTabularDiffElement).toExist();
-      expect(gitTabularDiffElement).toHaveClass('git-tabular-diff');
+        expect(id.length).toBe(36);
+        const workspaceElement = atom.views.getView(atom.workspace);
+        expect(workspaceElement).toExist();
+        const gitTabularDiffElement = workspaceElement.querySelector(`[id='${id}']`);
+        expect(gitTabularDiffElement).toExist();
+        expect(gitTabularDiffElement).toHaveClass('git-tabular-diff');
 
-      expect(GitTabularDiffView.pendingFileDiffs.size).toBe(0);
+        expect(GitTabularDiffView.pendingFileDiffs.size).toBe(0);
+      });
     });
   });
 
-  [nonexistentFile, exampleCopyFile].forEach((file) => {
-    it(`does not open a view for ${file}`, async function() {
-      GitTabularDiff.activate(null);
-      GitTabularDiff.fileSelector = helper.makeFileSelector(repositoryPath, file);
-      const id = await GitTabularDiff.compareSelectedFiles();
+  [false, true].forEach((split) => {
+    [nonexistentFile, exampleCopyFile].forEach((file) => {
+      it(`does not open a view for ${file}`, async function() {
+        GitTabularDiff.activate(null);
+        GitTabularDiff.fileSelector = helper.makeFileSelector(repositoryPath, file);
+        const id = await openView(split);
 
-      expect(id).toBeNull();
-      const workspaceElement = atom.views.getView(atom.workspace);
-      expect(workspaceElement).toExist();
-      expect(workspaceElement.querySelector('.git-tabular-diff')).not.toExist();
+        expect(id).toBeNull();
+        const workspaceElement = atom.views.getView(atom.workspace);
+        expect(workspaceElement).toExist();
+        expect(workspaceElement.querySelector('.git-tabular-diff')).not.toExist();
 
-      expect(GitTabularDiffView.pendingFileDiffs.size).toBe(0);
+        expect(GitTabularDiffView.pendingFileDiffs.size).toBe(0);
+      });
     });
   });
 });
