@@ -1,6 +1,6 @@
 {
   "atom-workspace": {
     "alt-g alt-d": "git-tabular-diff:compare-selected-files",
-    "alt-g alt-shift-d": "git-tabular-diff:compare-selected-split"
+    "alt-g ctrl-d": "git-tabular-diff:compare-selected-split"
   }
 }
