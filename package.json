@@ -2,7 +2,7 @@
   "name": "git-tabular-diff",
   "main": "./lib/git-tabular-diff",
   "version": "1.0.2",
-  "description": "Displays tabular and split differences of csv and text files in Atom panes.",
+  "description": "Displays a tabular difference of csv files or a split difference other files in an Atom pane.",
   "keywords": [
     "compare",
     "diff",
