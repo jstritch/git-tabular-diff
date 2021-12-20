@@ -26,6 +26,7 @@ const exampleSavedIgnoreCaseFileV2 = path.join('spec', 'data', 'example-saved-ig
 const exampleSavedIgnoreWhitespaceFileV1 = path.join('spec', 'data', 'example-saved-ignorewhitespace-v1.csv.gtd');
 const exampleSavedIgnoreWhitespaceFileV2 = path.join('spec', 'data', 'example-saved-ignorewhitespace-v2.csv.gtd');
 const exampleSavedSplitFileV2 = path.join('spec', 'data', 'example-saved-ignorewhitespace-v2.csv.gtd');
+const exampleSplitFile = path.join('spec', 'data', 'example-split.jpg.gtd');
 
 describe(methodName, function() {
 
@@ -49,6 +50,7 @@ describe(methodName, function() {
     [exampleSavedIgnoreWhitespaceFileV1, false], [exampleSavedIgnoreWhitespaceFileV1, true],
     [exampleSavedIgnoreWhitespaceFileV2, false], [exampleSavedIgnoreWhitespaceFileV2, true],
     [exampleSavedSplitFileV2, false], [exampleSavedSplitFileV2, true],
+    [exampleSplitFile, true],
   ].forEach(([file, split]) => {
     it(`opens a ${helper.getViewType(split)} view for modified file ${file}`, async function() {
       GitTabularDiff.activate(null);
