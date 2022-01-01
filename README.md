@@ -4,9 +4,8 @@
 # git-tabular-diff
 
 It is difficult to review changes made to csv files using a traditional Git difference.
-At other times, a git difference is more effective when displayed side-by-side.
-The git-tabular-diff package provides both a tabular and split view to
-ease review of these changes.
+At other times, a git difference is more meaningful when displayed side-by-side.
+The git-tabular-diff package provides both tabular and split views to ease these situations.
 An example split view appears below.
 
 ![Split view](https://github.com/jstritch/git-tabular-diff/blob/master/example-split.gif?raw=true)
