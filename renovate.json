@@ -11,6 +11,10 @@
     {
       "matchPackagePatterns": ["^eslint"],
       "groupName": "eslint packages"
+    },
+    {
+      "matchPackagePatterns": ["^stylelint", "^postcss"],
+      "groupName": "stylelint packages"
     }
   ],
   "automerge": true,
