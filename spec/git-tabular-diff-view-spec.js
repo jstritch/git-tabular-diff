@@ -16,9 +16,10 @@ const exampleModifiedPath = path.join(repositoryPath, exampleModifiedFile);
 
 const saveAsFile = `${exampleFile}${GitTabularDiffView.getFileExtension()}`;
 const saveAsPath = `${examplePath}${GitTabularDiffView.getFileExtension()}`;
-const goodSaveAsFile = path.join('spec', 'data', 'example-saved.csv.gtd');
-const goodSaveAsIgnoreCaseFile = path.join('spec', 'data', 'example-saved-ignorecase.csv.gtd');
-const goodSaveAsIgnoreWhitespaceFile = path.join('spec', 'data', 'example-saved-ignorewhitespace.csv.gtd');
+const goodSaveAsFile = path.join('spec', 'data', 'example-saved-v2.csv.gtd');
+const goodSaveAsIgnoreCaseFile = path.join('spec', 'data', 'example-saved-ignorecase-v2.csv.gtd');
+const goodSaveAsIgnoreWhitespaceFile = path.join('spec', 'data', 'example-saved-ignorewhitespace-v2.csv.gtd');
+const goodSaveAsSplitFile = path.join('spec', 'data', 'example-saved-split-v2.csv.gtd');
 
 describe('GitTabularDiffView.serialize()', function() {
   let ignoreCase, ignoreWhitespace;
@@ -37,33 +38,35 @@ describe('GitTabularDiffView.serialize()', function() {
     await fs.copyFile(exampleCopyPath, examplePath);
   });
 
-  it('saves the view so it may be re-instantiated', async function() {
-    GitTabularDiff.activate(null);
-    GitTabularDiff.fileSelector = helper.makeFileSelector(repositoryPath, exampleFile);
-    const id = await GitTabularDiff.compareSelectedFiles();
+  [false, true].forEach((split) => {
+    it(`serializes and deserializes the ${helper.getViewType(split)} view`, async function() {
+      GitTabularDiff.activate(null);
+      GitTabularDiff.fileSelector = helper.makeFileSelector(repositoryPath, exampleFile);
+      const id = await helper.openView(split);
 
-    expect(id.length).toBe(36);
-    const workspaceElement = atom.views.getView(atom.workspace);
-    expect(workspaceElement).toExist();
-    let gitTabularDiffElement = workspaceElement.querySelector(`[id='${id}']`);
-    expect(gitTabularDiffElement).toExist();
-    expect(gitTabularDiffElement).toHaveClass('git-tabular-diff');
+      expect(id.length).toBe(36);
+      const workspaceElement = atom.views.getView(atom.workspace);
+      expect(workspaceElement).toExist();
+      let gitTabularDiffElement = workspaceElement.querySelector(`[id='${id}']`);
+      expect(gitTabularDiffElement).toExist();
+      expect(gitTabularDiffElement).toHaveClass('git-tabular-diff');
 
-    expect(GitTabularDiffView.pendingFileDiffs.size).toBe(0);
+      expect(GitTabularDiffView.pendingFileDiffs.size).toBe(0);
 
-    let view = atom.workspace.getActivePaneItem();
-    expect(view).toBeInstanceOf(GitTabularDiffView);
-    const serializedState = view.serialize();
+      let view = atom.workspace.getActivePaneItem();
+      expect(view).toBeInstanceOf(GitTabularDiffView);
+      const serializedState = view.serialize();
 
-    view.destroy();
-    view = null;
-    gitTabularDiffElement = workspaceElement.querySelector(`[id='${id}']`);
-    expect(gitTabularDiffElement).not.toExist();
+      view.destroy();
+      view = null;
+      gitTabularDiffElement = workspaceElement.querySelector(`[id='${id}']`);
+      expect(gitTabularDiffElement).not.toExist();
 
-    view = GitTabularDiff.deserializeGitTabularDiffView(serializedState);
-    expect(view).toBeInstanceOf(GitTabularDiffView);
-    expect(view.title).toBe(exampleFile);
-    expect(view.getURI()).toBe(GitTabularDiffView.makeUri(id));
+      view = GitTabularDiff.deserializeGitTabularDiffView(serializedState);
+      expect(view).toBeInstanceOf(GitTabularDiffView);
+      expect(view.title).toBe(exampleFile);
+      expect(view.getURI()).toBe(GitTabularDiffView.makeUri(id));
+    });
   });
 });
 
@@ -83,11 +86,16 @@ describe('GitTabularDiffView.saveAs()', function() {
     try { await fs.unlink(saveAsPath); } catch (e) { return; }
   });
 
-  [goodSaveAsFile, goodSaveAsIgnoreCaseFile, goodSaveAsIgnoreWhitespaceFile].forEach((file) => {
-    it('saves the view with settings so it may be shared', async function() {
+  [
+    [goodSaveAsFile, false],
+    [goodSaveAsIgnoreCaseFile, false],
+    [goodSaveAsIgnoreWhitespaceFile, false],
+    [goodSaveAsSplitFile, true],
+  ].forEach(([file, split]) => {
+    it(`saves the ${helper.getViewType(split)} view with settings so it may be shared for file ${file}`, async function() {
       GitTabularDiff.activate(null);
       GitTabularDiff.fileSelector = helper.makeFileSelector(repositoryPath, file);
-      const id = await GitTabularDiff.compareSelectedFiles();
+      const id = await helper.openView(split);
 
       const workspaceElement = atom.views.getView(atom.workspace);
       expect(workspaceElement).toExist();
@@ -98,7 +106,7 @@ describe('GitTabularDiffView.saveAs()', function() {
       expect(GitTabularDiffView.pendingFileDiffs.size).toBe(0);
 
       // opening again should activate the existing view, not open another
-      const id2 = await GitTabularDiff.compareSelectedFiles();
+      const id2 = await helper.openView(split);
       expect(id2).toBe(id);
       expect(GitTabularDiffView.pendingFileDiffs.size).toBe(0);
 

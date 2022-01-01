@@ -2,7 +2,7 @@
   "name": "git-tabular-diff",
   "main": "./lib/git-tabular-diff",
   "version": "1.0.2",
-  "description": "Displays a tabular difference of csv files in an Atom pane.",
+  "description": "Displays a tabular difference of csv files or a split difference other files in an Atom pane.",
   "keywords": [
     "compare",
     "diff",
@@ -10,11 +10,16 @@
     "data",
     "table",
     "tabular",
+    "split",
     "git",
-    "daff"
+    "daff",
+    "diff2html"
   ],
   "activationCommands": {
-    "atom-workspace": "git-tabular-diff:compare-selected-files"
+    "atom-workspace": [
+      "git-tabular-diff:compare-selected-files",
+      "git-tabular-diff:compare-selected-split"
+    ]
   },
   "deserializers": {
     "GitTabularDiffView": "deserializeGitTabularDiffView"
@@ -28,11 +33,14 @@
   },
   "atomTestRunner": "./spec/custom-runner",
   "scripts": {
-    "lint": "npx eslint --ext .js,.json --ignore-path .gitignore .",
+    "lint": "npm run lint:less && npm run lint:js",
+    "lint:js": "npx eslint --ext .js,.json --ignore-path .gitignore .",
+    "lint:less": "npx stylelint styles",
     "test": "atom --test spec"
   },
   "dependencies": {
     "daff": "^1.3.47",
+    "diff2html": "^3.4.13",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
@@ -43,6 +51,10 @@
     "atom-jasmine3-test-runner": "^5.2.9",
     "eslint": "^8.5.0",
     "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jsonc": "^2.0.0"
+    "eslint-plugin-jsonc": "^2.0.0",
+    "postcss-less": "^5.0.0",
+    "stylelint": "^14.1.0",
+    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-config-standard": "^24.0.0"
   }
 }

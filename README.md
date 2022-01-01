@@ -3,22 +3,34 @@
 
 # git-tabular-diff
 
-It is difficult to review changes made to csv files by viewing a traditional Git difference.
-The git-tabular-diff package helps Atom users review changes made to csv files.
-The screenshot below shows a Git diff on the left and the git-tabular-diff view of the same changes on the right.
+It is difficult to review changes made to csv files using a traditional Git difference.
+At other times, a git difference is more meaningful when displayed side-by-side.
+The git-tabular-diff package provides both tabular and split views to ease these situations.
+An example split view appears below.
 
-![Diff comparison](https://github.com/jstritch/git-tabular-diff/blob/master/example.gif?raw=true)
+![Split view](https://github.com/jstritch/git-tabular-diff/blob/master/example-split.gif?raw=true)
 
-To use git-tabular-diff, select a csv file in the TreeView, Git panel,
-or the active text editor and invoke the git-tabular-diff:compare-selected-files command.
-The command is available from the context menus and bound to the key sequence `alt-g alt-d` by default.
+The following image compares a Git diff on the left to a tabular view of the same changes on the right.
+
+![Tabular view](https://github.com/jstritch/git-tabular-diff/blob/master/example.gif?raw=true)
+
+To use git-tabular-diff, select a file in the TreeView, Git panel, or the active text editor and
+invoke either the git-tabular-diff:compare-selected-files
+or git-tabular-diff:compare-selected-split command.
+The commands are available from the context menus and
+bound to the key sequences `alt-g alt-d` and `alt-g ctrl-d` by default.
 A new Atom pane opens displaying the changes between the working tree and the head revision.
-A pane is only opened if differences were found.
+A pane is only opened if differences are found.
 If multiple files are selected, the differences appear in a single pane.
 
-Settings allow ignoring case and/or white space.
+Settings allow ignoring case and/or white space in the tabular view.
+
+The split view invokes the Git diff machinery,
+enabling textconv display of binary files when configured.
+To learn about configuring textconv, visit
+[gitattributes[5]](https://git-scm.com/docs/gitattributes).
 
 Any git-tabular-diff view may be saved to a file with the saveAs `ctrl-shift-s` command.
 To open the file later, select the .gtd file in the Atom TreeView and
-invoke the git-tabular-diff:compare-selected-files command.
+invoke either git-tabular-diff command.
 A gtd file may be shared with other git-tabular-diff users.
