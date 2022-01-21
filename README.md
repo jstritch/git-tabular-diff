@@ -10,7 +10,7 @@ The git-tabular-diff package provides both tabular and split views for these use
 The split view invokes the Git diff machinery,
 enabling textconv display of binary files when configured.
 Text files display in the split view without configuration.
-An example split view appears below.
+A split view of a jpg image appears below.
 To learn about configuring textconv, visit
 [gitattributes[5]](https://git-scm.com/docs/gitattributes).
 
