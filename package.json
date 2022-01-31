@@ -27,7 +27,7 @@
     "GitTabularDiffView": "deserializeGitTabularDiffView"
   },
   "repository": "https://github.com/jstritch/git-tabular-diff",
-  "author": "John Stritch",
+  "author": "John Stritch <git.tabular.diff@gmail.com>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/jstritch",
   "engines": {
