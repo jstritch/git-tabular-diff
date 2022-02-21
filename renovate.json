@@ -7,20 +7,12 @@
     {
       "matchDatasources": ["npm"],
       "stabilityDays": 3
-    },
-    {
-      "matchPackagePatterns": ["^eslint"],
-      "groupName": "eslint packages"
-    },
-    {
-      "matchPackagePatterns": ["^stylelint", "^postcss"],
-      "groupName": "stylelint packages"
     }
   ],
   "automerge": true,
   "automergeType": "branch",
   "prHourlyLimit": 5,
-  "prConcurrentLimit": 5,
+  "prConcurrentLimit": 10,
   "rangeStrategy": "bump",
   "timezone": "America/Chicago",
   "schedule": ["before 5am", "after 7pm"]
