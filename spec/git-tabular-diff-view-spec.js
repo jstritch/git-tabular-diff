@@ -43,24 +43,16 @@ describe('GitTabularDiffView.serialize()', function() {
       GitTabularDiff.activate(null);
       GitTabularDiff.fileSelector = helper.makeFileSelector(repositoryPath, exampleFile);
       const id = await helper.openView(split);
-
       expect(id.length).toBe(36);
-      const workspaceElement = atom.views.getView(atom.workspace);
-      expect(workspaceElement).toExist();
-      let gitTabularDiffElement = workspaceElement.querySelector(`[id='${id}']`);
-      expect(gitTabularDiffElement).toExist();
-      expect(gitTabularDiffElement).toHaveClass('git-tabular-diff');
-
       expect(GitTabularDiffView.pendingFileDiffs.size).toBe(0);
 
       let view = atom.workspace.getActivePaneItem();
       expect(view).toBeInstanceOf(GitTabularDiffView);
+
       const serializedState = view.serialize();
 
       view.destroy();
       view = null;
-      gitTabularDiffElement = workspaceElement.querySelector(`[id='${id}']`);
-      expect(gitTabularDiffElement).not.toExist();
 
       view = GitTabularDiff.deserializeGitTabularDiffView(serializedState);
       expect(view).toBeInstanceOf(GitTabularDiffView);
@@ -96,29 +88,23 @@ describe('GitTabularDiffView.saveAs()', function() {
       GitTabularDiff.activate(null);
       GitTabularDiff.fileSelector = helper.makeFileSelector(repositoryPath, file);
       const id = await helper.openView(split);
-
-      const workspaceElement = atom.views.getView(atom.workspace);
-      expect(workspaceElement).toExist();
-      let gitTabularDiffElement = workspaceElement.querySelector(`[id='${id}']`);
-      expect(gitTabularDiffElement).toExist();
-      expect(gitTabularDiffElement).toHaveClass('git-tabular-diff');
-
+      expect(id.length).toBe(36);
       expect(GitTabularDiffView.pendingFileDiffs.size).toBe(0);
+
+      const view = atom.workspace.getActivePaneItem();
+      expect(view).toBeInstanceOf(GitTabularDiffView);
 
       // opening again should activate the existing view, not open another
       const id2 = await helper.openView(split);
       expect(id2).toBe(id);
       expect(GitTabularDiffView.pendingFileDiffs.size).toBe(0);
 
-      let view = atom.workspace.getActivePaneItem();
-      expect(view).toBeInstanceOf(GitTabularDiffView);
-      expect(view.getPath()).toBe(saveAsFile);
-      await view.saveAs(saveAsPath);
+      const view2 = atom.workspace.getActivePaneItem();
+      expect(view2).toBe(view);
+      expect(GitTabularDiffView.pendingFileDiffs.size).toBe(0);
 
-      view.destroy();
-      view = null;
-      gitTabularDiffElement = workspaceElement.querySelector(`[id='${id}']`);
-      expect(gitTabularDiffElement).not.toExist();
+      expect(view2.getPath()).toBe(saveAsFile);
+      await view2.saveAs(saveAsPath);
 
       const savedfileContents = await fs.readFile(saveAsPath, 'utf8');
       const goodSaveAsPath = path.join(repositoryPath, file);

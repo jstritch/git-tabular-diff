@@ -56,15 +56,11 @@ describe(methodName, function() {
       GitTabularDiff.activate(null);
       GitTabularDiff.fileSelector = helper.makeFileSelector(repositoryPath, file);
       const id = await helper.openView(split);
-
       expect(id.length).toBe(36);
-      const workspaceElement = atom.views.getView(atom.workspace);
-      expect(workspaceElement).toExist();
-      const gitTabularDiffElement = workspaceElement.querySelector(`[id='${id}']`);
-      expect(gitTabularDiffElement).toExist();
-      expect(gitTabularDiffElement).toHaveClass('git-tabular-diff');
-
       expect(GitTabularDiffView.pendingFileDiffs.size).toBe(0);
+
+      const view = atom.workspace.getActivePaneItem();
+      expect(view).toBeInstanceOf(GitTabularDiffView);
     });
   });
 
