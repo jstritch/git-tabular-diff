@@ -30,6 +30,9 @@
   "author": "John Stritch <git.tabular.diff@gmail.com>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/jstritch",
+  "bugs": {
+    "url": "https://github.com/jstritch/git-tabular-diff/issues"
+  },
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
