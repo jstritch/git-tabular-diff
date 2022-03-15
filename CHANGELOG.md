@@ -1,3 +1,7 @@
+## 1.1.1 - 2022-03-15
+* Update Babel target to Electron 11 for Atom 1.60.0
+* Update diff2html to v3.4.16
+
 ## 1.1.0 - 2022-02-08
 * Add split view
 
