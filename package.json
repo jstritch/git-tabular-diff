@@ -53,7 +53,7 @@
     "@babel/eslint-parser": "^7.17.0",
     "@babel/eslint-plugin": "^7.17.7",
     "@babel/preset-env": "^7.16.11",
-    "atom-jasmine3-test-runner": "^4.2.0",
+    "atom-jasmine3-test-runner": "^4.4.9",
     "eslint": "^8.13.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsonc": "^2.2.1"
