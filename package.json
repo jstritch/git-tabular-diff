@@ -55,7 +55,7 @@
     "@jest-runner/electron": "^3.0.1",
     "eslint": "^8.16.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsonc": "^2.2.1",
+    "eslint-plugin-jsonc": "^2.3.0",
     "jest": "^28.1.0"
   }
 }
